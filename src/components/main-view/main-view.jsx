@@ -32,4 +32,23 @@ export const MainView = () => {
             image: "https://m.media-amazon.com/images/I/71Ao1Iee5bL._AC_UF894,1000_QL80_.jpg"
         }
     ]);
+
+    const [selectedMovie, setselectedMovie] = useState(null);
+    if (movies.length === 0) {
+        return <div>The list is empty!</div>;
+    }
+
+    return (
+        <div>
+            {movies.map((movie) => (
+                    <MovieCard
+                    key={movie.id}
+                    movie={movie}
+                    onMovieClick={(newSelectedMovie) => {
+                        setselectedMovie(newSelectedMovie);
+                    }}
+                />
+            ))}
+        </div>
+    );
 };
