@@ -11,7 +11,13 @@ export const MainView = () => {
 
     // Connect App to API with Hook
     useEffect(() => {
-        fetch("https://my-movies-api-23e4e5dc7a5e.herokuapp.com/movies")
+        if (!token) {
+            return;
+        }
+
+        fetch("https://my-movies-api-23e4e5dc7a5e.herokuapp.com/movies", {
+            headers: { Authorization: `Bearer ${token}`}
+        })
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
@@ -32,7 +38,7 @@ export const MainView = () => {
                 });
                 setMovies(moviesFromApi);
             });
-    }, []);
+    }, [token]);
 
     // Require Login
     if (!user) {
