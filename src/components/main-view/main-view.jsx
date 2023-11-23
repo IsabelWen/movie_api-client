@@ -7,6 +7,7 @@ export const MainView = () => {
     const [movies, setMovies] = useState([]);
     const [selectedMovie, setselectedMovie] = useState(null);
     const [user, setUser] = useState(null);
+    const [token, setToken] = useState(null);
 
     // Connect App to API with Hook
     useEffect(() => {
@@ -35,7 +36,14 @@ export const MainView = () => {
 
     // Require Login
     if (!user) {
-        return <LoginView  onLoggedIn={(user) => setUser(user)} />;
+        return (
+            <LoginView 
+                onLoggedIn={(user, token) => {
+                    setUser(user);
+                    setToken(token);
+                }}
+            />
+        );
     }
 
     // Show Movie Info (MovieView) with similar Movies 
