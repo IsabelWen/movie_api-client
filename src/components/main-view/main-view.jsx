@@ -72,7 +72,10 @@ export const MainView = () => {
     }
 
     if (movies.length === 0) {
-        return <div>The list is empty!</div>;
+        return <div>
+            <p>The list is empty!</p>
+            <button onClick={() => { setUser(null); }}>Logout</button>
+        </div>;
     }
 
     return (
@@ -86,6 +89,7 @@ export const MainView = () => {
                     }}
                 />
             ))}
+            <button onClick={() => { setUser(null); }}>Logout</button>
         </div>
     );
 };
