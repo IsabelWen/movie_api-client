@@ -12,7 +12,9 @@ export const SignupView = () => {
 
         const data = {
             access: username,
-            secret: password
+            secret: password,
+            email: email,
+            birthday: birthday
         };
 
         fetch("https://my-movies-api-23e4e5dc7a5e.herokuapp.com/users", {
@@ -21,13 +23,13 @@ export const SignupView = () => {
             header: {
                 "Content-Type": "application/json"
             }
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log("signup response: ", data);
-            })
-            .catch((e) => {
-                alert("Something went wrong");
+        }).then((response) => {
+            if (response.ok) {
+                alert("Signup successful");
+                window.location.reload();
+            } else {
+                alert("Signup failed");
+            }
         });
     };
 
