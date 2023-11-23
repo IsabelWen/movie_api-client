@@ -18,11 +18,7 @@ export const MovieView = ({ movie, onBackClick }) => {
             </div>
             <div>
                 <span>Genre: </span>
-<<<<<<< HEAD
-                <span>{movie.name}</span>
-=======
                 <span>{movie.Genre.Name}</span>
->>>>>>> Exercise-3.4
             </div>
             <div>
                 <span>Year: </span>
