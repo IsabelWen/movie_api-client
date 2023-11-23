@@ -13,16 +13,25 @@ export const LoginView = ({ onLoggedIn }) => {
             secret: password
         };
 
-        fetch("https://openlibrary.org/account/login.json", {
+        fetch("https://my-movies-api-23e4e5dc7a5e.herokuapp.com/login", {
             method: "POST",
+            header: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify(data)
-        }).then((response) => {
-            if (response.ok) {
-                onLoggedIn(username);
-            } else {
-                alert("Login failed")
-            }
-        });
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Login response: ", data);
+                if (data.user) {
+                    onLoggedIn(data.user, data.token);
+                } else {
+                    alert("No such user");
+                }
+            })
+            .catch((e) => {
+                alert("Something went wrong");
+            });
     };
 
     return (
