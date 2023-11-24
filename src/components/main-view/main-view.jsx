@@ -1,12 +1,26 @@
 import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import { LoginView } from "../login-view/login-view.jsx";
+import { SignupView } from "../signup-view/signup-view.jsx";
 
 export const MainView = () => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedToken = localStorage.getItem("token");
+    const [user, setUser] = useState(storedUser? storedUser: null);
+    const [token, setToken] = useState(storedToken? storedToken: null);
     const [movies, setMovies] = useState([]);
+    const [selectedMovie, setselectedMovie] = useState(null);
 
+    // Connect App to API with Hook
     useEffect(() => {
-        fetch("https://my-movies-api-23e4e5dc7a5e.herokuapp.com/movies")
+        if (!token) {
+            return;
+        }
+
+        fetch("https://my-movies-api-23e4e5dc7a5e.herokuapp.com/movies", {
+            headers: { Authorization: `Bearer ${token}`}
+        })
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
@@ -27,10 +41,25 @@ export const MainView = () => {
                 });
                 setMovies(moviesFromApi);
             });
-    }, []);
+    }, [token]);
 
-    const [selectedMovie, setselectedMovie] = useState(null);
+    // Require Login
+    if (!user) {
+        return (
+            <>
+                <LoginView 
+                    onLoggedIn={(user, token) => {
+                        setUser(user);
+                        setToken(token);
+                    }}
+                />
+                or
+                <SignupView />
+            </>
+        );
+    }
 
+    // Show Movie Info (MovieView) with similar Movies 
     if (selectedMovie) {
         let similarMovies = movies.filter((movie) => 
         {
@@ -64,7 +93,10 @@ export const MainView = () => {
     }
 
     if (movies.length === 0) {
-        return <div>The list is empty!</div>;
+        return <div>
+            <p>The list is empty!</p>
+            <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
+        </div>;
     }
 
     return (
@@ -78,6 +110,7 @@ export const MainView = () => {
                     }}
                 />
             ))}
+            <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
         </div>
     );
 };
