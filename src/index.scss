@@ -1,7 +1,5 @@
-$color: steelblue;
-
-.my-movie {
-  color: $color;
-}
+$primary: orange;
+$body-bg: #333333;
+$body-color: white;
 
 @import '~bootstrap/scss/bootstrap.scss';
