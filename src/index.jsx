@@ -6,7 +6,11 @@ import { Container } from "react-bootstrap";
 
 // Main component (will eventually use all the others)
 const MyMovieApplication = () => {
-    return <MainView />;
+    return (
+    <Container>
+        <MainView />
+    </Container>
+    )
 };
 
 // Finds the root of the app
