@@ -125,11 +125,10 @@ export const MainView = () => {
                         onMovieClick={(newSelectedMovie) => {
                             setselectedMovie(newSelectedMovie);
                         }}
-                        style={img={height:"300px"}}
                     />
                 </Col>
             ))}
-            <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
+            <Button className="my-5" onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
         </Row>
     );
 };
