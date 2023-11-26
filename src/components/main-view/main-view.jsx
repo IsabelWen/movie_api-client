@@ -87,14 +87,14 @@ export const MainView = () => {
                 <MovieView movie={selectedMovie} onBackClick={() => setselectedMovie(null)} /><br />
                 <h2>Similar Movies</h2>
                 <Row className="justify-content-md-start">
-                    {similarMovies.map((movie) => (
-                        <Col md={2} className="mx-2" key={movie._id}>
-                        <MovieCard
-                            movie={movie}
-                            onMovieClick={(newSelectedMovie) => {
-                                setselectedMovie(newSelectedMovie);
-                            }}
-                        />
+                    {similarMovies.slice(0,5).map((movie) => (
+                        <Col md={2} className="mx-2 similar-movies-img" key={movie._id}>
+                            <MovieCard
+                                movie={movie}
+                                onMovieClick={(newSelectedMovie) => {
+                                    setselectedMovie(newSelectedMovie);
+                                }}
+                            />
                         </Col>
                     ))}
                 </Row>
