@@ -86,9 +86,9 @@ export const MainView = () => {
                 <>
                 <MovieView movie={selectedMovie} onBackClick={() => setselectedMovie(null)} /><br />
                 <h2>Similar Movies</h2>
-                <Row className="justify-content-md-start">
+                <Row className="justify-content-right justify-content-md-center">
                     {similarMovies.slice(0,5).map((movie) => (
-                        <Col md={2} className="mx-2 similar-movies-img" key={movie._id}>
+                        <Col sm={6} md={4} lg={3} xl={2} className="mx-2 my-3 col-7 similar-movies-img" key={movie._id}>
                             <MovieCard
                                 movie={movie}
                                 onMovieClick={(newSelectedMovie) => {
@@ -117,9 +117,9 @@ export const MainView = () => {
 
     // Return MovieCards and Logout Button
     return (
-        <Row className="justify-content-md-center">
+        <Row className="justify-content-center">
             {movies.map((movie) => (
-                <Col md={3} className="mb-5" key={movie._id}>
+                <Col md={6} lg={4} xl={3} className="mb-5 col-8" key={movie._id}>
                     <MovieCard
                         movie={movie}
                         onMovieClick={(newSelectedMovie) => {
