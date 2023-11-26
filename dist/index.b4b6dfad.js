@@ -27331,10 +27331,13 @@ const MainView = ()=>{
                     columnNumber: 17
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
-                    className: "justify-content-md-start",
+                    className: "justify-content-right justify-content-md-center",
                     children: similarMovies.slice(0, 5).map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
-                            md: 2,
-                            className: "mx-2 similar-movies-img",
+                            sm: 6,
+                            md: 4,
+                            lg: 3,
+                            xl: 2,
+                            className: "mx-2 my-3 col-7 similar-movies-img",
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                                 movie: movie,
                                 onMovieClick: (newSelectedMovie)=>{
@@ -27395,11 +27398,13 @@ const MainView = ()=>{
     }, undefined);
     // Return MovieCards and Logout Button
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
-        className: "justify-content-md-center",
+        className: "justify-content-center",
         children: [
             movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
-                    md: 3,
-                    className: "mb-5",
+                    md: 6,
+                    lg: 4,
+                    xl: 3,
+                    className: "mb-5 col-8",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                         movie: movie,
                         onMovieClick: (newSelectedMovie)=>{
