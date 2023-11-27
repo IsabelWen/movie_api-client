@@ -9,11 +9,11 @@ export const MovieView = ({ movies }) => {
     const movie = movies.find((movie) => movie._id === movieId);
 
     return (
-        <Row className="my-5 justify-content-center">
-            <Col md={5} >
-                <img src={movie.ImagePath} alt="movie cover" className="img-fluid"/>
+        <Row className="my-5 justify-content-md-center">
+            <Col md={7} className="col-12">
+                <img src={movie.ImagePath} alt="movie cover" className="mx-auto w-100" />
             </Col>
-            <Col md={3}>
+            <Col md={5} className="col-12">
                 <div className="my-1">
                     <span className="h1">{movie.Title}</span>
                 </div>
