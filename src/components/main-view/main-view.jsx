@@ -47,15 +47,13 @@ export const MainView = () => {
             });
     }, [token]);
 
-    //Require Login
-
     return (
         <BrowserRouter>
             <NavigationBar
                 user={user}
                 onLoggedOut={() => setUser(null)}
             />
-            <Row className="justify-content-md-center">
+            <Row className="justify-content-center mb-5">
                 <Routes>
                     {/* Return SignupView if not logged in, otherwise mainpage */}
                     <Route
