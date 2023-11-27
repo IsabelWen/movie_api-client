@@ -109,6 +109,7 @@ export const MainView = () => {
                             </>
                         }
                     />
+                    {/* Return MovieCards if logged in, otherwise LoginView */}
                     <Route 
                     path="/"
                     element={
