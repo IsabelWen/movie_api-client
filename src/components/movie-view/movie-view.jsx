@@ -6,7 +6,7 @@ import { Col, Row } from "react-bootstrap";
 export const MovieView = ({ movies }) => {
     const { movieId } = useParams();
 
-    const movie = movies.find((m) => m.id === movieId);
+    const movie = movies.find((movie) => movie._id === movieId);
 
     return (
         <Row className="my-5 justify-content-center">
