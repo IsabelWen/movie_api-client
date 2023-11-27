@@ -53,7 +53,7 @@ export const MainView = () => {
                 user={user}
                 onLoggedOut={() => setUser(null)}
             />
-            <Row className="justify-content-center mb-5">
+            <Row className="justify-content-center my-5">
                 <Routes>
                     {/* Return SignupView if not logged in, otherwise mainpage */}
                     <Route
