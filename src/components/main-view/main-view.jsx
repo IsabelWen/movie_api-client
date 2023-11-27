@@ -7,7 +7,6 @@ import { NavigationBar } from "../navigation-bar/navigation-bar.jsx";
 import "./main-view.scss";
 import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
-import { Button } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export const MainView = () => {
@@ -16,7 +15,6 @@ export const MainView = () => {
     const [user, setUser] = useState(storedUser? storedUser: null);
     const [token, setToken] = useState(storedToken? storedToken: null);
     const [movies, setMovies] = useState([]);
-    const [selectedMovie, setselectedMovie] = useState(null);
 
     // Connect App to API with Hook
     useEffect(() => {
@@ -50,7 +48,94 @@ export const MainView = () => {
     }, [token]);
 
     //Require Login
-    if (!user) {
+
+    return (
+        <BrowserRouter>
+            <NavigationBar
+                user={user}
+                onLoggedOut={() => setUser(null)}
+            />
+            <Row className="justify-content-md-center">
+                <Routes>
+                    {/* Return SignupView if not logged in, otherwise mainpage */}
+                    <Route
+                    path="/signup"
+                    element={
+                        <>
+                            {user? (
+                                <Navigate to="/" />
+                            ) : (
+                                <Col md={5}>
+                                    <SignupView />
+                                </Col>
+                            )}
+                        </>
+                    }
+                    />
+                    {/* Return LoginView if not logged in, otherwise mainpage */}
+                    <Route 
+                        path="/login"
+                        element={
+                            <>
+                                {user ? (
+                                    <Navigate to="/" />
+                                ) : (
+                                    <Col md={5}>
+                                        <LoginView 
+                                            onLoggedIn={(user, token) => {
+                                                setUser(user);
+                                                setToken(token);
+                                            }}
+                                        />
+                                    </Col>
+                                )}
+                            </>
+                        }
+                    />
+                    {/* Return MovieView if logged in, otherwise LoginView */}
+                    <Route 
+                        path="/movies/:movieId"
+                        element={
+                            <>
+                                {!user ? (
+                                    <Navigate to="/login" replace />
+                                ) : movies.length === 0 ? (
+                                    <Col>The list is empty</Col>
+                                ) : (
+                                    <Col md={8}>
+                                        <MovieView movies={movies} />
+                                    </Col>
+                                )}
+                            </>
+                        }
+                    />
+                    <Route 
+                    path="/"
+                    element={
+                        <>
+                            {!user ? (
+                                <Navigate to="/login" replace />
+                            ) : movies.length === 0 ? (
+                                <Col>The list is empty</Col>
+                            ) : (
+                                <>
+                                    {movies.map((movie) => (
+                                        <Col md={6} lg={4} xl={3} className="mb-5 col-8" key={movie._id}>
+                                            <MovieCard movie={movie} />
+                                        </Col>
+                                    ))}
+                                </>
+                            )}
+                        </>
+                    }
+                    />
+                </Routes>
+            </Row>
+        </BrowserRouter>
+    );
+};
+
+    /*if (!user) {
         return (
             <Row className="justify-content-md-center mt-5">
                 <Col md={5}>
@@ -132,5 +217,4 @@ export const MainView = () => {
             ))}
             <Button className="my-5" onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
         </Row>
-    );
-};
+    );*/
