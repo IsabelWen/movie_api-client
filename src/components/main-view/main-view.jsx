@@ -52,7 +52,11 @@ export const MainView = () => {
         <BrowserRouter>
             <NavigationBar
                 user={user}
-                onLoggedOut={() => setUser(null)}
+                onLoggedOut={() => {
+                    setUser(null);
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                }}
             />
             <Row className="justify-content-center my-5">
                 <Routes>
@@ -140,9 +144,7 @@ export const MainView = () => {
                                 <Col>
                                     <ProfileView 
                                     user={user}
-                                    token={token}
                                     movies={movies}
-                                    setUser={setUser}
                                     />
                                 </Col>
                             )}
