@@ -44,6 +44,47 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
             });
     };
 
+    // Handle remove Favorite Movie
+    const removeFav = (_id) => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        const token = localStorage.getItem('token');
+
+        fetch(`https://my-movies-api-23e4e5dc7a5e.herokuapp.com/users/${user.Username}/movies/${_id}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response) => {
+            console.log("response")
+            if (response.ok) {
+                const updatedUser = response.json();
+                localStorage.setItem('user', JSON.stringify(updatedUser));
+                setUser(updatedUser);
+            } else {
+                alert("Removal failed.")
+            }
+        }).catch(error => {
+            console.error('Error: ', error);
+        });
+    }
+
+    // Handle delete User
+    const handleDelete = () => {
+        fetch(`https://my-movies-api-23e4e5dc7a5e.herokuapp.com/users/${user.Username}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response) => {
+            if (response.ok) {
+                setUser(null);
+                alert("User has been deleted")
+            } else {
+                alert("Something went wrong.")
+            }
+        })
+    }
+
     return (
         <Container className="my-5">
             <Row>
@@ -103,7 +144,7 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
                 </Col>
             </Row>
             <Row>
-                <FavoriteMovies favoriteMovieList={favoriteMovieList}/>
+                <FavoriteMovies favoriteMovieList={favoriteMovieList} removeFav={removeFav}/>
             </Row>
         </Container>
     );
