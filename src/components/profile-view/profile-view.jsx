@@ -9,10 +9,11 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
     const [email, setEmail] = useState(user.Email);
     const [birthday, setBirthday] = useState(user.Birthday);
 
+    // Return list of favorite Movies
+    const favoriteMovieList = user.FavoriteMovies?.map( favoriteMovie => (
+        movies.find(movie => (movie._id === favoriteMovie))
+    ));
 
-    const favoriteMovieList = movies.filter((movies) => {
-        return user.FavoriteMovies.includes(movies._id);
-    });
 
     const handleUpdate = (event) => {
         event.preventDefault();
