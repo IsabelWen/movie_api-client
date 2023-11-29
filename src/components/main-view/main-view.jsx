@@ -105,7 +105,7 @@ export const MainView = () => {
                                 ) : movies.length === 0 ? (
                                     <Col>There is no movie</Col>
                                 ) : (
-                                    <Col md={8}>
+                                    <Col md={12}>
                                         <MovieView movies={movies} />
                                     </Col>
                                 )}
