@@ -1,6 +1,5 @@
 import { MovieCard } from "../movie-card/movie-card";
 import { Row, Col, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 export const FavoriteMovies = ({ favoriteMovieList, removeFav }) => {
     return (
