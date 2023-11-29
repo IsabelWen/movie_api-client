@@ -5,15 +5,15 @@ export const FavoriteMovies = ({ favoriteMovieList, removeFav }) => {
     return (
         <>
             <h2>Favorite Movies</h2>
-                <Row className="justify-content-right justify-content-md-center">
+                <Row className="justify-content-center">
                     {
                     favoriteMovieList?.length !== 0 ?
                     favoriteMovieList?.map((movie) => (
-                        <Col sm={6} md={4} lg={3} xl={2} className="mx-2 my-3 col-7 similar-movies-img" key={movie._id}>
+                        <Col sm={7} md={5} lg={3} xl={2} className="mx-2 mt-2 mb-5 col-6 similar-movies-img" key={movie._id}>
                             <MovieCard
                                 movie={movie}
                             />
-                            <Button variant="secondary" className="my-4" onClick={() => removeFav(movie._id)}>Remove from list</Button>
+                            <Button variant="primary" className="ms-2 my-2" onClick={() => removeFav(movie._id)}>Remove from list</Button>
                         </Col>
                     ))
                     : <Col>
