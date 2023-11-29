@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import { Button, Card, Form } from "react-bootstrap";
 import { FavoriteMovies } from "./favorite-movie";
@@ -15,36 +15,48 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
     ));
 
 
+    // Update user info
     const handleUpdate = (event) => {
         event.preventDefault();
 
-        const data = {
+        const user = JSON.parse(localStorage.getItem('user'));
+        const token = localStorage.getItem('token');
+
+        const data ={
             Username: username,
             Password: password,
             Email: email,
             Birthday: birthday
-        };
+        }
 
-        fetch("https://my-movies-api-23e4e5dc7a5e.herokuapp.com/users/${user.Username}", {
+        fetch(`https://my-movies-api-23e4e5dc7a5e.herokuapp.com/users/${user.Username}`, {
             method: "PUT",
             body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
             }
-        })
-            .then( async (response) => {
-                if (response.ok) {
-                    response.json();
-                    alert("Update was successful");
-                    window.location.reload();
-                } else {
-                    alert("Update failed")
-                }
-            });
+        }).then(async (response) => {
+            console.log(response)
+            if (response.ok) {
+                const updatedUser = await response.json();
+                localStorage.setItem('user', JSON.stringify(updatedUser));
+                setUser(updatedUser);
+                window.location.reload();
+                alert("Update was successful");
+            } else {
+                alert("Update failed")
+            }
+        }).catch(error => {
+            console.error('Error: ', error);
+        });
     };
 
-    // Handle remove Favorite Movie
+
+        
+  
+
+    // Remove Favorite Movie
     const removeFav = (_id) => {
         const user = JSON.parse(localStorage.getItem('user'));
         const token = localStorage.getItem('token');
@@ -68,7 +80,7 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
         });
     }
 
-    // Handle delete User
+    // Delete User
     const handleDelete = () => {
         fetch(`https://my-movies-api-23e4e5dc7a5e.herokuapp.com/users/${user.Username}`, {
             method: "DELETE",
@@ -116,7 +128,6 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
                             <Form.Control
                             type="password"
                             value={password}
-                            defaultValue={user.Password}
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="*****"
                             />
@@ -139,7 +150,8 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
                             placeholder={user.Birthday}
                             />
                         </Form.Group>
-                        <Button type="submit" onClick={handleUpdate} className="mt-2">Update</Button>
+                        <Button type="submit" onClick={handleUpdate} className="mt-2 me-2">Update</Button>
+                        <Button onClick={handleDelete} className="mt-2">Delete User</Button>
                     </Form>
                 </Col>
             </Row>
