@@ -128,7 +128,7 @@ export const MovieView = ({ movies, setUser}) => {
                 {
                 similarMovies.length !== 0 ?
                 similarMovies.slice(0,5).map((movie) => (
-                    <Col sm={5} lg={4} xl={3} className="mx-2 my-3 col-6 similar-movies-img" key={movie._id}>
+                    <Col  sm={5} md={4} lg={3} xl={2} className="mx-2 my-3 col-6 similar-movies-img" key={movie._id}>
                         <MovieCard
                             movie={movie}
                         />
