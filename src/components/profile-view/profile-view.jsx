@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import { Button, Card, Form } from "react-bootstrap";
 import { FavoriteMovies } from "./favorite-movie";
@@ -13,7 +13,6 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
     const favoriteMovieList = user.FavoriteMovies?.map( favoriteMovie => (
         movies.find(movie => (movie._id === favoriteMovie))
     ));
-
 
     // Update user info
     const handleUpdate = (event) => {
@@ -72,6 +71,7 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
                 const updatedUser = response.json();
                 localStorage.setItem('user', JSON.stringify(updatedUser));
                 setUser(updatedUser);
+                alert("Removed successfully");
             } else {
                 alert("Removal failed.")
             }
