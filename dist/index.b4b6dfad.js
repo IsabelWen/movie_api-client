@@ -42115,13 +42115,13 @@ const FavoriteMovies = ({ favoriteMovieList, removeFav })=>{
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
-                className: "justify-content-right justify-content-md-center",
+                className: "justify-content-center",
                 children: favoriteMovieList?.length !== 0 ? favoriteMovieList?.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
-                        sm: 6,
-                        md: 4,
+                        sm: 7,
+                        md: 5,
                         lg: 3,
                         xl: 2,
-                        className: "mx-2 my-3 col-7 similar-movies-img",
+                        className: "mx-2 mt-2 mb-5 col-6 similar-movies-img",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                                 movie: movie
@@ -42131,8 +42131,8 @@ const FavoriteMovies = ({ favoriteMovieList, removeFav })=>{
                                 columnNumber: 29
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                                variant: "secondary",
-                                className: "my-4",
+                                variant: "primary",
+                                className: "ms-2 my-2",
                                 onClick: ()=>removeFav(movie._id),
                                 children: "Remove from list"
                             }, void 0, false, {
