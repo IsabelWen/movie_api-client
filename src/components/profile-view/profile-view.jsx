@@ -120,16 +120,15 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             minLength="3"
-                            placeholder={user.Username}
                             />
                         </Form.Group>
                         <Form.Group controlId="formPassword">
                             <Form.Label>Password:</Form.Label>
                             <Form.Control
                             type="password"
-                            value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            placeholder="*****"
+                            placeholder="enter your password"
+                            required
                             />
                         </Form.Group>
                         <Form.Group controlId="formEmail">
@@ -138,7 +137,6 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            placeholder={user.Email}
                             />
                         </Form.Group>
                         <Form.Group controlId="formBirthday">
@@ -147,7 +145,6 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
                             type="date"
                             value={birthday}
                             onChange={(e) => setBirthday(e.target.value)}
-                            placeholder={user.Birthday}
                             />
                         </Form.Group>
                         <Button type="submit" onClick={handleUpdate} className="mt-2 me-2">Update</Button>
