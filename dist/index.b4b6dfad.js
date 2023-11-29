@@ -41244,8 +41244,9 @@ const MovieView = ({ movies, setUser })=>{
                 className: "justify-content-center",
                 children: similarMovies.length !== 0 ? similarMovies.slice(0, 5).map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                         sm: 5,
-                        lg: 4,
-                        xl: 3,
+                        md: 4,
+                        lg: 3,
+                        xl: 2,
                         className: "mx-2 my-3 col-6 similar-movies-img",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                             movie: movie
