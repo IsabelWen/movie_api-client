@@ -1,25 +1,30 @@
 import { useState } from "react";
+import {useNavigate} from "react-router-dom";
 import { Col, Row, Container } from "react-bootstrap";
 import { Button, Card, Form } from "react-bootstrap";
-import { FavoriteMovies } from "./favorite-movie";
+import { MovieCard } from "../movie-card/movie-card";
 
-export const ProfileView = ({ user, token, movies, setUser }) => {
+export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
     const [username, setUsername] = useState(user.Username);
     const [password, setPassword] = useState(user.Password);
     const [email, setEmail] = useState(user.Email);
     const [birthday, setBirthday] = useState(user.Birthday);
 
+    // Navigate
+    const navigate = useNavigate();
+
     // Return list of favorite Movies
-    const favoriteMovieList = user.FavoriteMovies?.map( favoriteMovie => (
-        movies.find(movie => (movie._id === favoriteMovie))
-    ));
+    const favoriteMovieList = movies.filter(m => user.FavoriteMovies.includes(m._id));
+
+    // Token
+    const token = localStorage.getItem('token');
 
     // Update user info
     const handleUpdate = (event) => {
+        // this prevents the default behavior of the form which is to reload the entire page
         event.preventDefault();
 
         const user = JSON.parse(localStorage.getItem('user'));
-        const token = localStorage.getItem('token');
 
         const data ={
             Username: username,
@@ -41,7 +46,6 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
                 const updatedUser = await response.json();
                 localStorage.setItem('user', JSON.stringify(updatedUser));
                 setUser(updatedUser);
-                window.location.reload();
                 alert("Update was successful");
             } else {
                 alert("Update failed")
@@ -63,6 +67,8 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
             if (response.ok) {
                 setUser(null);
                 alert("User has been deleted")
+                localStorage.clear();
+                navigate('/'); // go back to home page
             } else {
                 alert("Something went wrong.")
             }
@@ -125,7 +131,25 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
                 </Col>
             </Row>
             <Row>
-                <FavoriteMovies favoriteMovieList={favoriteMovieList} removeFav={removeFav}/>
+                <h2>Favorite Movies</h2>
+                <Row className="justify-content-center">
+                    {
+                    favoriteMovieList?.length !== 0 ?
+                    favoriteMovieList?.map((movie) => (
+                        <Col sm={7} md={5} lg={3} xl={2} className="mx-2 mt-2 mb-5 col-6 similar-movies-img" key={movie._id}>
+                            <MovieCard
+                                movie={movie}
+                                removeFav={removeFav}
+                                addFav={addFav}
+                                isFavorite={user.FavoriteMovies.includes(movie._id)}
+                            />
+                        </Col>
+                    ))
+                    : <Col>
+                    <p>There are no favorites Movies</p>
+                    </Col>
+                    }
+                </Row>
             </Row>
         </Container>
     );
