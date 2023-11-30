@@ -19,19 +19,22 @@ export const SignupView = () => {
             Birthday: birthday
         };
 
-        fetch("https://my-movies-api-23e4e5dc7a5e.herokuapp.com/users", {
+        fetch(`https://my-movies-api-23e4e5dc7a5e.herokuapp.com/users`, {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json"
             }
-        }).then((response) => {
+        }).then(async (response) => {
+            console.log(data)
             if (response.ok) {
                 alert("Signup successful");
                 window.location.reload();
             } else {
                 alert("Signup failed");
             }
+        }).catch(error => {
+            console.error('Error: ', error);
         });
     };
 
@@ -71,10 +74,9 @@ export const SignupView = () => {
                 type="date"
                 value={birthday}
                 onChange={(e) => setBirthday(e.target.value)}
-                required
                 />
             </Form.Group>
-            <Button type="submit" className="mt-2">Submit</Button>
+            <Button type="submit" onClick={handleSubmit} className="mt-2">Submit</Button>
         </Form>
     );
 };
