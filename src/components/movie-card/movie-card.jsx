@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import "./movie-card.scss";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 
 export const MovieCard = ({ movie, addFav, removeFav, isFavorite }) => {
     return (
