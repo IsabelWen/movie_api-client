@@ -48,6 +48,32 @@ export const MainView = () => {
             });
     }, [token]);
 
+    // Remove Favorite Movie
+    const removeFav = (id) => {
+
+        fetch(`https://my-movies-api-23e4e5dc7a5e.herokuapp.com/users/${user.Username}/movies/${id}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                alert("Failed to remove")
+            }
+        }).then((user) => {
+            if (user) {
+                alert("Removed successfully from favorite Movies");
+                localStorage.setItem('user', JSON.stringify(user));
+                setUser(user);
+                //setIsFavorite(false);
+            }
+        }).catch(error => {
+            console.error('Error: ', error);
+        });
+    };
+
     return (
         <BrowserRouter>
             <NavigationBar

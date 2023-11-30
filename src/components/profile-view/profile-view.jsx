@@ -52,36 +52,6 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
     };
 
 
-        
-  
-
-    // Remove Favorite Movie
-    const removeFav = (_id) => {
-        const user = JSON.parse(localStorage.getItem('user'));
-        const token = localStorage.getItem('token');
-
-        fetch(`https://my-movies-api-23e4e5dc7a5e.herokuapp.com/users/${user.Username}/movies/${_id}`, {
-                method: "DELETE",
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            }).then((response) => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    alert("Failed to remove")
-                }
-            }).then((user) => {
-                if (user) {
-                    alert("Removed successfully from favorite Movies");
-                    localStorage.setItem('user', JSON.stringify(user));
-                    setUser(user);
-                }
-            }).catch(error => {
-                console.error('Error: ', error);
-            });
-    }
-
     // Delete User
     const handleDelete = () => {
         fetch(`https://my-movies-api-23e4e5dc7a5e.herokuapp.com/users/${user.Username}`, {
