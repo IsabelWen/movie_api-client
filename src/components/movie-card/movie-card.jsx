@@ -2,8 +2,9 @@ import PropTypes from "prop-types";
 import "./movie-card.scss";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
-export const MovieCard = ({ movie }) => {
+export const MovieCard = ({ movie, addFav, removeFav, isFavorite }) => {
     return (
         <Card className="h-100 mt-5 card-shadow">
             <Card.Img variant="top card-img" src={movie.ImagePath} />
@@ -15,6 +16,13 @@ export const MovieCard = ({ movie }) => {
                         Open
                     </Button>
                 </Link>
+                <div>
+                    {isFavorite ? (
+                        <Button className="my-2 me-2" onClick={() => removeFav(movie._id)}>Remove from Favorite</Button>
+                    ) : (
+                        <Button className="my-2 me-2" onClick={() => addFav(movie._id)}>Add to Favorite</Button>
+                    )}
+                </div>
             </Card.Body>
         </Card>
     );
