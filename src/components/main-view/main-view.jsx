@@ -48,6 +48,32 @@ export const MainView = () => {
             });
     }, [token]);
 
+    // Add Favorite Movie
+    const addFav = (id) => {
+
+        fetch(`https://my-movies-api-23e4e5dc7a5e.herokuapp.com/users/${user.Username}/movies/${id}`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                alert("Failed to add")
+            }
+        }).then((user) => {
+            if (user) {
+                alert("Added successfully");
+                localStorage.setItem('user', JSON.stringify(user));
+                setUser(user);
+                //setIsFavorite(true);
+            }
+        }).catch(error => {
+            console.error('Error: ', error);
+        });
+    };
+
     // Remove Favorite Movie
     const removeFav = (id) => {
 
@@ -132,7 +158,11 @@ export const MainView = () => {
                                     <Col>There is no movie</Col>
                                 ) : (
                                     <Col md={12}>
-                                        <MovieView movies={movies} />
+                                        <MovieView 
+                                        movies={movies}
+                                        removeFav={removeFav}
+                                        addFav={addFav}
+                                        />
                                     </Col>
                                 )}
                             </>
@@ -151,7 +181,12 @@ export const MainView = () => {
                                 <>
                                     {movies.map((movie) => (
                                         <Col md={6} lg={4} xl={3} className="mb-5 col-8" key={movie._id}>
-                                            <MovieCard movie={movie} />
+                                            <MovieCard
+                                            movie={movie} 
+                                            removeFav={removeFav} 
+                                            addFav={addFav} 
+                                            isFavorite={user.FavoriteMovies.includes(movie._id)} 
+                                            />
                                         </Col>
                                     ))}
                                 </>
@@ -171,6 +206,9 @@ export const MainView = () => {
                                     <ProfileView 
                                     user={user}
                                     movies={movies}
+                                    removeFav={removeFav}
+                                    addFav={addFav}
+                                    setUser={setUser}
                                     />
                                 </Col>
                             )}
