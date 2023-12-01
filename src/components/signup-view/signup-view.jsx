@@ -30,6 +30,8 @@ export const SignupView = () => {
             if (response.ok) {
                 alert("Signup successful");
                 window.location.reload();
+            } else if (username.length < 5) {
+                alert("Username must be 5 characters or longer.");
             } else {
                 alert("Signup failed");
             }
@@ -47,7 +49,7 @@ export const SignupView = () => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
-                minLength="3"
+                minLength="5"
                 />
             </Form.Group>
             <Form.Group controlId="formPassword">
