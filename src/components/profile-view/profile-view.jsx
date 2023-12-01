@@ -42,7 +42,9 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
             }
         }).then(async (response) => {
             console.log(response)
-            if (response.ok) {
+            if (password === "$2b$10$6/.H4oLZfvDzJh2m0RRigOy2owbuX8MNeA3sCdJNirUfnP5MH5ePO") {
+                alert("Please enter a password")
+            } else if (response.ok) {
                 const updatedUser = await response.json();
                 localStorage.setItem('user', JSON.stringify(updatedUser));
                 setUser(updatedUser);
@@ -75,6 +77,7 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
         })
     }
 
+
     return (
         <Container className="my-5">
             <Row>
@@ -97,7 +100,7 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
                             type="text"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
-                            minLength="3"
+                            minLength="5"
                             />
                         </Form.Group>
                         <Form.Group controlId="formPassword">
@@ -105,7 +108,8 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
                             <Form.Control
                             type="password"
                             onChange={(e) => setPassword(e.target.value)}
-                            placeholder="enter your password"
+                            placeholder="Enter password"
+                            value={null}
                             required
                             />
                         </Form.Group>
