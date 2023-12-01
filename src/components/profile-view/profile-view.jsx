@@ -42,9 +42,7 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
             }
         }).then(async (response) => {
             console.log(response)
-            if (password === "$2b$10$6/.H4oLZfvDzJh2m0RRigOy2owbuX8MNeA3sCdJNirUfnP5MH5ePO") {
-                alert("Please enter a password")
-            } else if (response.ok) {
+            if (response.ok) {
                 const updatedUser = await response.json();
                 localStorage.setItem('user', JSON.stringify(updatedUser));
                 setUser(updatedUser);
@@ -110,7 +108,6 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="Enter password"
                             value={null}
-                            required
                             />
                         </Form.Group>
                         <Form.Group controlId="formEmail">
