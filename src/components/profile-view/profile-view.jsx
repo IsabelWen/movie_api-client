@@ -80,12 +80,12 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
     return (
         <Container className="my-5">
             <Row>
-                <Col md={5}>
+                <Col md={5} className="text-center text-md-start">
                     <Card>
                         <Card.Body>
                             <Card.Title>My Profile</Card.Title>
                             <PersonSquare variant="top" color="orange" className="my-4" size={180} />
-                            <Card.Text>Username: {user.Username}</Card.Text>
+                            <Card.Text>Username:{user.Username}</Card.Text>
                             <Card.Text>Email: {user.Email}</Card.Text>
                             <Card.Text>Birthday: {user.Birthday}</Card.Text>
                         </Card.Body>
@@ -96,6 +96,7 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
                         <Form.Group controlId="formUsername">
                             <Form.Label>Username:</Form.Label>
                             <Form.Control
+                            className="mb-3"
                             type="text"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
@@ -105,6 +106,7 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
                         <Form.Group controlId="formPassword">
                             <Form.Label>Password:</Form.Label>
                             <Form.Control
+                            className="mb-3"
                             type="password"
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="Enter password"
@@ -114,6 +116,7 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
                         <Form.Group controlId="formEmail">
                             <Form.Label>Email:</Form.Label>
                             <Form.Control
+                            className="mb-3"
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -122,13 +125,14 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
                         <Form.Group controlId="formBirthday">
                             <Form.Label>Birthday:</Form.Label>
                             <Form.Control
+                            className="mb-2"
                             type="date"
                             value={birthday}
                             onChange={(e) => setBirthday(e.target.value)}
                             />
                         </Form.Group>
-                        <Button type="submit" onClick={handleUpdate} className="mt-2 me-2">Update</Button>
-                        <Button onClick={handleDelete} className="mt-2">Delete User</Button>
+                        <Button type="submit" onClick={handleUpdate} className="mt-3 me-2">Update</Button>
+                        <Button onClick={handleDelete} className="mt-3">Delete User</Button>
                     </Form>
                 </Col>
             </Row>
