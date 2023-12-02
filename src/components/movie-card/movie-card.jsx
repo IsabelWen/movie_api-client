@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import "./movie-card.scss";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { BookmarkHeart, BookmarkHeartFill } from "react-bootstrap-icons";
 
 export const MovieCard = ({ movie, addFav, removeFav, isFavorite }) => {
     return (
@@ -17,9 +18,9 @@ export const MovieCard = ({ movie, addFav, removeFav, isFavorite }) => {
                 </Link>
                 <div>
                     {isFavorite ? (
-                        <Button className="my-2 me-2" onClick={() => removeFav(movie._id)}>Remove from Favorite</Button>
+                        <BookmarkHeartFill size={35} color="orange" className="fav-button my-2" onClick={() => removeFav(movie._id)}/>
                     ) : (
-                        <Button className="my-2 me-2" onClick={() => addFav(movie._id)}>Add to Favorite</Button>
+                        <BookmarkHeart size={35} color="orange" className="fav-button my-2" onClick={() => addFav(movie._id)}/>
                     )}
                 </div>
             </Card.Body>
