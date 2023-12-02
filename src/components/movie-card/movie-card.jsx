@@ -7,7 +7,7 @@ import { BookmarkHeart, BookmarkHeartFill } from "react-bootstrap-icons";
 export const MovieCard = ({ movie, addFav, removeFav, isFavorite }) => {
     return (
         <Card className="h-100 mt-5 card-shadow">
-            <div className="card-img-container">
+            <div className="position-relative .d-inline-block">
                 <Card.Img variant="top card-img" src={movie.ImagePath} />
                 <div>
                     {isFavorite ? (
