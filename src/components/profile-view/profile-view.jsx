@@ -132,12 +132,12 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
                             />
                         </Form.Group>
                         <Button type="submit" onClick={handleUpdate} className="mt-3 me-2">Update</Button>
-                        <Button onClick={handleDelete} className="mt-3">Delete User</Button>
+                        <Button onClick={handleDelete} className="mt-3 bg-danger border-danger text-white">Delete User</Button>
                     </Form>
                 </Col>
             </Row>
             <Row>
-                <h2 className="mt-5">Favorite Movies</h2>
+                <h2 className="mt-5 text-center text-md-start">Favorite Movies</h2>
                 <Row className="justify-content-center">
                     {
                     favoriteMovieList?.length !== 0 ?
