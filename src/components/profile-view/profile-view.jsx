@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import { Col, Row, Container } from "react-bootstrap";
 import { Button, Card, Form } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
+import { PersonSquare } from "react-bootstrap-icons";
 
 export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
     const [username, setUsername] = useState(user.Username);
@@ -83,7 +84,7 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
                     <Card>
                         <Card.Body>
                             <Card.Title>My Profile</Card.Title>
-                            <Card.Img variant="top" src="https://via.placeholder.com/250" className="w-50 rounded"/>
+                            <PersonSquare variant="top" color="orange" className="my-4" size={180} />
                             <Card.Text>Username: {user.Username}</Card.Text>
                             <Card.Text>Email: {user.Email}</Card.Text>
                             <Card.Text>Birthday: {user.Birthday}</Card.Text>
@@ -132,7 +133,7 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
                 </Col>
             </Row>
             <Row>
-                <h2>Favorite Movies</h2>
+                <h2 className="mt-5">Favorite Movies</h2>
                 <Row className="justify-content-center">
                     {
                     favoriteMovieList?.length !== 0 ?
