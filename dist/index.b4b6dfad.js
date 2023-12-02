@@ -48135,7 +48135,7 @@ const ProfileView = ({ user, movies, setUser, removeFav, addFav })=>{
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                                     onClick: handleDelete,
-                                    className: "mt-3",
+                                    className: "mt-3 bg-danger border-danger text-white",
                                     children: "Delete User"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
@@ -48162,7 +48162,7 @@ const ProfileView = ({ user, movies, setUser, removeFav, addFav })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                        className: "mt-5",
+                        className: "mt-5 text-center text-md-start",
                         children: "Favorite Movies"
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
