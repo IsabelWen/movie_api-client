@@ -60,11 +60,10 @@ export const MainView = () => {
             if (response.ok) {
                 return response.json();
             } else {
-                alert("Failed to add")
+                alert("Failed to add");
             }
         }).then((user) => {
             if (user) {
-                alert("Added successfully");
                 localStorage.setItem('user', JSON.stringify(user));
                 setUser(user);
                 //setIsFavorite(true);
@@ -90,7 +89,6 @@ export const MainView = () => {
             }
         }).then((user) => {
             if (user) {
-                alert("Removed successfully from favorite Movies");
                 localStorage.setItem('user', JSON.stringify(user));
                 setUser(user);
                 //setIsFavorite(false);
