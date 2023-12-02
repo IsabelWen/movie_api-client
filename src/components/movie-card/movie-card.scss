@@ -7,3 +7,13 @@
     height: 400px; 
     object-fit: fill;
 }
+
+.fav-button {
+    cursor: pointer;
+    transition: 0.2s linear;
+}
+
+.fav-button:hover {
+    transform: scale(1.2);
+}
+
