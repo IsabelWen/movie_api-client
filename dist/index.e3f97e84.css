@@ -8,6 +8,15 @@
   height: 400px;
 }
 
+.fav-button {
+  cursor: pointer;
+  transition: all .2s linear;
+}
+
+.fav-button:hover {
+  transform: scale(1.2);
+}
+
 .similar-movies-img {
   height: 400px;
 }
