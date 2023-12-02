@@ -6,11 +6,13 @@
   object-fit: fill;
   width: 150px;
   height: 400px;
+  display: block;
 }
 
 .fav-button {
   cursor: pointer;
   transition: all .2s linear;
+  position: absolute;
 }
 
 .fav-button:hover {
