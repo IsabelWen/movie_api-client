@@ -1,11 +1,22 @@
 .card-shadow {
-  box-shadow: 5px 5px 15px 5px #d3d3d366;
+  box-shadow: 5px 5px 15px 5px #ffa50066;
 }
 
 .card-img {
   object-fit: fill;
   width: 150px;
   height: 400px;
+  display: block;
+}
+
+.fav-button {
+  cursor: pointer;
+  transition: all .2s linear;
+  position: absolute;
+}
+
+.fav-button:hover {
+  transform: scale(1.2);
 }
 
 .similar-movies-img {

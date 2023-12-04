@@ -3,10 +3,11 @@ import {useNavigate} from "react-router-dom";
 import { Col, Row, Container } from "react-bootstrap";
 import { Button, Card, Form } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
+import { PersonSquare } from "react-bootstrap-icons";
+import moment from 'moment';
 
 export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
     const [username, setUsername] = useState(user.Username);
-    const [password, setPassword] = useState(user.Password);
     const [email, setEmail] = useState(user.Email);
     const [birthday, setBirthday] = useState(user.Birthday);
 
@@ -28,7 +29,6 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
 
         const data ={
             Username: username,
-            Password: password,
             Email: email,
             Birthday: birthday
         }
@@ -79,40 +79,33 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
     return (
         <Container className="my-5">
             <Row>
-                <Col md={5}>
+                <Col md={4} className="text-center text-md-start ms-3">
                     <Card>
                         <Card.Body>
                             <Card.Title>My Profile</Card.Title>
-                            <Card.Img variant="top" src="https://via.placeholder.com/250" className="w-50 rounded"/>
-                            <Card.Text>Username: {user.Username}</Card.Text>
+                            <PersonSquare variant="top" color="orange" className="my-4" size={180} />
+                            <Card.Text>Username:{user.Username}</Card.Text>
                             <Card.Text>Email: {user.Email}</Card.Text>
-                            <Card.Text>Birthday: {user.Birthday}</Card.Text>
+                            <Card.Text>Birthday: {moment(user.Birthday).utc().format('YYYY-MM-DD')}</Card.Text>
                         </Card.Body>
                     </Card>
                 </Col>
-                <Col md={7}>
+                <Col md={7} className="mt-5">
                     <Form onSubmit={handleUpdate}>
                         <Form.Group controlId="formUsername">
                             <Form.Label>Username:</Form.Label>
                             <Form.Control
+                            className="mb-3"
                             type="text"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             minLength="5"
                             />
                         </Form.Group>
-                        <Form.Group controlId="formPassword">
-                            <Form.Label>Password:</Form.Label>
-                            <Form.Control
-                            type="password"
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Enter password"
-                            value={null}
-                            />
-                        </Form.Group>
                         <Form.Group controlId="formEmail">
                             <Form.Label>Email:</Form.Label>
                             <Form.Control
+                            className="mb-3"
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -121,18 +114,19 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
                         <Form.Group controlId="formBirthday">
                             <Form.Label>Birthday:</Form.Label>
                             <Form.Control
+                            className="mb-2"
                             type="date"
                             value={birthday}
                             onChange={(e) => setBirthday(e.target.value)}
                             />
                         </Form.Group>
-                        <Button type="submit" onClick={handleUpdate} className="mt-2 me-2">Update</Button>
-                        <Button onClick={handleDelete} className="mt-2">Delete User</Button>
+                        <Button type="submit" onClick={handleUpdate} className="mt-3 me-2">Update</Button>
+                        <Button onClick={handleDelete} className="mt-3 bg-danger border-danger text-white">Delete User</Button>
                     </Form>
                 </Col>
             </Row>
             <Row>
-                <h2>Favorite Movies</h2>
+                <h2 className="mt-5 text-center text-md-start">Favorite Movies</h2>
                 <Row className="justify-content-center">
                     {
                     favoriteMovieList?.length !== 0 ?
