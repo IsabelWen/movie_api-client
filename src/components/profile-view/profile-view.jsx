@@ -29,7 +29,6 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
 
         const data ={
             Username: username,
-            Password: password,
             Email: email,
             Birthday: birthday
         }
@@ -101,16 +100,6 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             minLength="5"
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="formPassword">
-                            <Form.Label>Password:</Form.Label>
-                            <Form.Control
-                            className="mb-3"
-                            type="password"
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Enter password"
-                            value={null}
                             />
                         </Form.Group>
                         <Form.Group controlId="formEmail">
