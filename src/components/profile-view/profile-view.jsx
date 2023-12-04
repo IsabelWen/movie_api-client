@@ -4,10 +4,10 @@ import { Col, Row, Container } from "react-bootstrap";
 import { Button, Card, Form } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
 import { PersonSquare } from "react-bootstrap-icons";
+import moment from 'moment';
 
 export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
     const [username, setUsername] = useState(user.Username);
-    const [password, setPassword] = useState(user.Password);
     const [email, setEmail] = useState(user.Email);
     const [birthday, setBirthday] = useState(user.Birthday);
 
@@ -79,18 +79,18 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
     return (
         <Container className="my-5">
             <Row>
-                <Col md={5} className="text-center text-md-start">
+                <Col md={4} className="text-center text-md-start ms-3">
                     <Card>
                         <Card.Body>
                             <Card.Title>My Profile</Card.Title>
                             <PersonSquare variant="top" color="orange" className="my-4" size={180} />
                             <Card.Text>Username:{user.Username}</Card.Text>
                             <Card.Text>Email: {user.Email}</Card.Text>
-                            <Card.Text>Birthday: {user.Birthday}</Card.Text>
+                            <Card.Text>Birthday: {moment(user.Birthday).utc().format('YYYY-MM-DD')}</Card.Text>
                         </Card.Body>
                     </Card>
                 </Col>
-                <Col md={7}>
+                <Col md={7} className="mt-5">
                     <Form onSubmit={handleUpdate}>
                         <Form.Group controlId="formUsername">
                             <Form.Label>Username:</Form.Label>
