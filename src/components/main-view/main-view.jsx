@@ -17,6 +17,7 @@ export const MainView = () => {
     const [token, setToken] = useState(storedToken? storedToken: null);
     const [movies, setMovies] = useState([]);
     const [search, setSearch] = useState("");
+    const [selectedGenre, setSelectedGenre] = useState("");
 
     // Connect App to API with Hook
     useEffect(() => {
@@ -187,14 +188,24 @@ export const MainView = () => {
                                         placeholder="Search for ..." 
                                         aria-label="Search" 
                                         />
+                                        <Form.Select className="ms-3 w-25" aria-label="Default select genre" onChange={(e) => setSelectedGenre(e.target.value)}>
+                                            <option value="" selected>Search by genre</option>
+                                            <option value="Comedy Horror">Comedy Horror</option>
+                                            <option value="Horror">Horror</option>
+                                            <option value="Musical">Musical</option>
+                                            <option value="Fantasy">Fantasy</option>
+                                            <option value="Thriller">Thriller</option>
+                                        </Form.Select>
                                     </Form>
                                     {movies.filter((movie) => {
-                                        return search.toLowerCase() === ""
+                                        return selectedGenre === ""
                                         ? movie
-                                        : movie.Title.toLowerCase().includes(search);
+                                        : movie.Genre.Name === selectedGenre;
                                     })
                                     .filter((movie) => {
-                                        //return movie.Genre.Name === 
+                                        return search === ""
+                                        ? movie
+                                        : movie.Title.toLowerCase().includes(search.toLowerCase());
                                     })
                                     .map((movie, movieId) => (
                                         <Col md={6} lg={4} xl={3} className="mb-5 col-8" key={movieId}>
