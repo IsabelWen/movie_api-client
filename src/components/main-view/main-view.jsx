@@ -16,6 +16,7 @@ export const MainView = () => {
     const [user, setUser] = useState(storedUser? storedUser: null);
     const [token, setToken] = useState(storedToken? storedToken: null);
     const [movies, setMovies] = useState([]);
+    const [search, setSearch] = useState("");
 
     // Connect App to API with Hook
     useEffect(() => {
@@ -178,10 +179,25 @@ export const MainView = () => {
                             ) : (
                                 <>
                                     <Form className="form-inline mt-5 d-flex justify-content-center">
-                                        <Form.Control  className="mx-5 mx-md-0" type="search" id="searchForm" placeholder="Search" aria-label="Search" />
+                                        <Form.Control
+                                        className="mx-5 mx-md-0"
+                                        type="search"
+                                        id="searchForm"
+                                        onChange={(e) => setSearch(e.target.value)}
+                                        placeholder="Search for ..." 
+                                        aria-label="Search" 
+                                        />
                                     </Form>
-                                    {movies.map((movie) => (
-                                        <Col md={6} lg={4} xl={3} className="mb-5 col-8" key={movie._id}>
+                                    {movies.filter((movie) => {
+                                        return search.toLowerCase() === ""
+                                        ? movie
+                                        : movie.Title.toLowerCase().includes(search);
+                                    })
+                                    .filter((movie) => {
+                                        //return movie.Genre.Name === 
+                                    })
+                                    .map((movie, movieId) => (
+                                        <Col md={6} lg={4} xl={3} className="mb-5 col-8" key={movieId}>
                                             <MovieCard
                                             movie={movie} 
                                             removeFav={removeFav} 
