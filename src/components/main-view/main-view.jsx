@@ -181,14 +181,14 @@ export const MainView = () => {
                                 <>
                                     <Form className="form-inline mt-5 d-flex justify-content-center">
                                         <Form.Control
-                                        className="mx-5 mx-md-0"
+                                        className="ms-5 mx-md-0"
                                         type="search"
                                         id="searchForm"
                                         onChange={(e) => setSearch(e.target.value)}
                                         placeholder="Search for ..." 
                                         aria-label="Search" 
                                         />
-                                        <Form.Select className="ms-3 w-25" aria-label="Default select genre" onChange={(e) => setSelectedGenre(e.target.value)}>
+                                        <Form.Select className="ms-1 ms-md-3 w-25" aria-label="Default select genre" onChange={(e) => setSelectedGenre(e.target.value)}>
                                             <option value="" selected>Search by genre</option>
                                             <option value="Comedy Horror">Comedy Horror</option>
                                             <option value="Horror">Horror</option>
