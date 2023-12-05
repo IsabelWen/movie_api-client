@@ -7,7 +7,7 @@ import { NavigationBar } from "../navigation-bar/navigation-bar.jsx";
 import { ProfileView } from "../profile-view/profile-view.jsx";
 import "./main-view.scss";
 import { Row } from "react-bootstrap";
-import { Col } from "react-bootstrap";
+import { Col, Form, Button } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export const MainView = () => {
@@ -16,6 +16,8 @@ export const MainView = () => {
     const [user, setUser] = useState(storedUser? storedUser: null);
     const [token, setToken] = useState(storedToken? storedToken: null);
     const [movies, setMovies] = useState([]);
+    const [search, setSearch] = useState("");
+    const [selectedGenre, setSelectedGenre] = useState("");
 
     // Connect App to API with Hook
     useEffect(() => {
@@ -177,8 +179,36 @@ export const MainView = () => {
                                 <Col>The list is empty</Col>
                             ) : (
                                 <>
-                                    {movies.map((movie) => (
-                                        <Col md={6} lg={4} xl={3} className="mb-5 col-8" key={movie._id}>
+                                    <Form className="form-inline mt-5 d-flex justify-content-center">
+                                        <Form.Control
+                                        className="mx-5 mx-md-0"
+                                        type="search"
+                                        id="searchForm"
+                                        onChange={(e) => setSearch(e.target.value)}
+                                        placeholder="Search for ..." 
+                                        aria-label="Search" 
+                                        />
+                                        <Form.Select className="ms-3 w-25" aria-label="Default select genre" onChange={(e) => setSelectedGenre(e.target.value)}>
+                                            <option value="" selected>Search by genre</option>
+                                            <option value="Comedy Horror">Comedy Horror</option>
+                                            <option value="Horror">Horror</option>
+                                            <option value="Musical">Musical</option>
+                                            <option value="Fantasy">Fantasy</option>
+                                            <option value="Thriller">Thriller</option>
+                                        </Form.Select>
+                                    </Form>
+                                    {movies.filter((movie) => {
+                                        return selectedGenre === ""
+                                        ? movie
+                                        : movie.Genre.Name === selectedGenre;
+                                    })
+                                    .filter((movie) => {
+                                        return search === ""
+                                        ? movie
+                                        : movie.Title.toLowerCase().includes(search.toLowerCase());
+                                    })
+                                    .map((movie, movieId) => (
+                                        <Col md={6} lg={4} xl={3} className="mb-5 col-8" key={movieId}>
                                             <MovieCard
                                             movie={movie} 
                                             removeFav={removeFav} 
