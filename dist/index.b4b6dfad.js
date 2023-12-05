@@ -27195,6 +27195,8 @@ const MainView = ()=>{
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
     const [movies, setMovies] = (0, _react.useState)([]);
+    const [search, setSearch] = (0, _react.useState)("");
+    const [selectedGenre, setSelectedGenre] = (0, _react.useState)("");
     // Connect App to API with Hook
     (0, _react.useEffect)(()=>{
         if (!token) return;
@@ -27275,7 +27277,7 @@ const MainView = ()=>{
                 }
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 103,
+                lineNumber: 105,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -27294,7 +27296,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 114,
+                            lineNumber: 116,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27314,7 +27316,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 129,
+                            lineNumber: 131,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27336,7 +27338,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 149,
+                            lineNumber: 151,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27351,15 +27353,54 @@ const MainView = ()=>{
                                     children: [
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
                                             className: "form-inline mt-5 d-flex justify-content-center",
-                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                                                className: "mx-5 mx-md-0",
-                                                type: "search",
-                                                id: "searchForm",
-                                                placeholder: "Search",
-                                                "aria-label": "Search"
-                                            }, void 0, false, void 0, void 0)
-                                        }, void 0, false, void 0, void 0),
-                                        movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                                    className: "mx-5 mx-md-0",
+                                                    type: "search",
+                                                    id: "searchForm",
+                                                    onChange: (e)=>setSearch(e.target.value),
+                                                    placeholder: "Search for ...",
+                                                    "aria-label": "Search"
+                                                }, void 0, false, void 0, void 0),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Select, {
+                                                    className: "ms-3 w-25",
+                                                    "aria-label": "Default select genre",
+                                                    onChange: (e)=>setSelectedGenre(e.target.value),
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                                            value: "",
+                                                            selected: true,
+                                                            children: "Search by genre"
+                                                        }, void 0, false, void 0, void 0),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                                            value: "Comedy Horror",
+                                                            children: "Comedy Horror"
+                                                        }, void 0, false, void 0, void 0),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                                            value: "Horror",
+                                                            children: "Horror"
+                                                        }, void 0, false, void 0, void 0),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                                            value: "Musical",
+                                                            children: "Musical"
+                                                        }, void 0, false, void 0, void 0),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                                            value: "Fantasy",
+                                                            children: "Fantasy"
+                                                        }, void 0, false, void 0, void 0),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                                            value: "Thriller",
+                                                            children: "Thriller"
+                                                        }, void 0, false, void 0, void 0)
+                                                    ]
+                                                }, void 0, true, void 0, void 0)
+                                            ]
+                                        }, void 0, true, void 0, void 0),
+                                        movies.filter((movie)=>{
+                                            return selectedGenre === "" ? movie : movie.Genre.Name === selectedGenre;
+                                        }).filter((movie)=>{
+                                            return search === "" ? movie : movie.Title.toLowerCase().includes(search.toLowerCase());
+                                        }).map((movie, movieId)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                                 md: 6,
                                                 lg: 4,
                                                 xl: 3,
@@ -27370,13 +27411,13 @@ const MainView = ()=>{
                                                     addFav: addFav,
                                                     isFavorite: user.FavoriteMovies.includes(movie._id)
                                                 }, void 0, false, void 0, void 0)
-                                            }, movie._id, false, void 0, void 0))
+                                            }, movieId, false, void 0, void 0))
                                     ]
                                 }, void 0, true)
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 170,
+                            lineNumber: 172,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27397,28 +27438,28 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 199,
+                            lineNumber: 226,
                             columnNumber: 21
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 112,
+                    lineNumber: 114,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 111,
+                lineNumber: 113,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 102,
+        lineNumber: 104,
         columnNumber: 9
     }, undefined);
 };
-_s(MainView, "Bcc6oz8wsJgzJCd9yVNztwKZlxA=");
+_s(MainView, "AnvOnhYbzfkTdsEaQR2pkhY78OM=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
