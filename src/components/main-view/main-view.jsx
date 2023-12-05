@@ -7,7 +7,7 @@ import { NavigationBar } from "../navigation-bar/navigation-bar.jsx";
 import { ProfileView } from "../profile-view/profile-view.jsx";
 import "./main-view.scss";
 import { Row } from "react-bootstrap";
-import { Col } from "react-bootstrap";
+import { Col, Form, Button } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export const MainView = () => {
@@ -177,6 +177,9 @@ export const MainView = () => {
                                 <Col>The list is empty</Col>
                             ) : (
                                 <>
+                                    <Form className="form-inline mt-5 d-flex justify-content-center">
+                                        <Form.Control  className="mx-5 mx-md-0" type="search" id="searchForm" placeholder="Search" aria-label="Search" />
+                                    </Form>
                                     {movies.map((movie) => (
                                         <Col md={6} lg={4} xl={3} className="mb-5 col-8" key={movie._id}>
                                             <MovieCard
