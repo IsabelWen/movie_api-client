@@ -24,13 +24,13 @@ Hosted on Netlify: https://mymovie-api.netlify.app/
 
 ## Views
 
-# Login View
+### Login View
 * Allows users to log in with a username and password
 
-# Signup View
+### Signup View
 * Allows new users to register (username, password, email, date of birth)
 
-# Main View
+### Main View
 * Returns ALL movies to the user (each movie item with an image, title, and description)
 * Filtering the list of movies with live search feature
 * Filtering the list of movies by genre with select feature
@@ -40,12 +40,12 @@ Hosted on Netlify: https://mymovie-api.netlify.app/
     * Ability to log out
     * Ability to navigate to Profile View
 
-# Single Movie View
+### Single Movie View
 * Returns data (description, genre, director, image) about a single movie to the user
 * Allows users to add/remove a movie to/from their list of favorites
 * Shows similar movies (by genre), which also can be added/removed to/from list of favorites or be selected for more details
 
-# Profile View
+### Profile View
 * Displays user registration details
 * Allows users to update their info (username, email, date of birth)
 * Allows existing users to deregister
