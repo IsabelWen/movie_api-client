@@ -32,7 +32,11 @@ export const SignupView = () => {
                 window.location.reload();
             } else if (username.length < 5) {
                 alert("Username must be 5 characters or longer.");
-            } else {
+            } else if (password === "") {
+                alert("You have to enter a password.");
+            } else if (email.includes("@") === false) {
+                alert("Please enter a valid email adress.")
+            }else {
                 alert("Signup failed");
             }
         }).catch(error => {
