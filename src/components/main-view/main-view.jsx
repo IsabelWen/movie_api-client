@@ -53,7 +53,7 @@ export const MainView = () => {
     // Add Favorite Movie
     const addFav = (id) => {
 
-        fetch(`https://my-movies-api-23e4e5dc7a5e.herokuapp.com/users/${user.Username}/movies/${id}`, {
+        fetch(`https://movieapionrender.onrender.com/users/${user.Username}/movies/${id}`, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -78,7 +78,7 @@ export const MainView = () => {
     // Remove Favorite Movie
     const removeFav = (id) => {
 
-        fetch(`https://my-movies-api-23e4e5dc7a5e.herokuapp.com/users/${user.Username}/movies/${id}`, {
+        fetch(`https://movieapionrender.onrender.com/users/${user.Username}/movies/${id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`
