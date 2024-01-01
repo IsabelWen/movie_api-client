@@ -27200,7 +27200,7 @@ const MainView = ()=>{
     // Connect App to API with Hook
     (0, _react.useEffect)(()=>{
         if (!token) return;
-        fetch("https://my-movies-api-23e4e5dc7a5e.herokuapp.com/movies", {
+        fetch("https://movieapionrender.onrender.com/movies", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
