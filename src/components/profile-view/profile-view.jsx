@@ -33,7 +33,7 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav}) => {
             Birthday: birthday
         }
 
-        fetch(`https://my-movies-api-23e4e5dc7a5e.herokuapp.com/users/${user.Username}`, {
+        fetch(`https://movieapionrender.onrender.com/users/${user.Username}`, {
             method: "PUT",
             body: JSON.stringify(data),
             headers: {

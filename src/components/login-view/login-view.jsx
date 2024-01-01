@@ -15,7 +15,7 @@ export const LoginView = ({ onLoggedIn }) => {
             Password: password
         };
 
-        fetch("https://my-movies-api-23e4e5dc7a5e.herokuapp.com/login", {
+        fetch("https://movieapionrender.onrender.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

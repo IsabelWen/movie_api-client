@@ -47507,7 +47507,7 @@ const LoginView = ({ onLoggedIn })=>{
             Username: username,
             Password: password
         };
-        fetch("https://my-movies-api-23e4e5dc7a5e.herokuapp.com/login", {
+        fetch("https://movieapionrender.onrender.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -47639,7 +47639,7 @@ const SignupView = ()=>{
             Email: email,
             Birthday: birthday
         };
-        fetch(`https://my-movies-api-23e4e5dc7a5e.herokuapp.com/users`, {
+        fetch(`https://movieapionrender.onrender.com/users`, {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -47958,7 +47958,7 @@ const ProfileView = ({ user, movies, setUser, removeFav, addFav })=>{
             Email: email,
             Birthday: birthday
         };
-        fetch(`https://my-movies-api-23e4e5dc7a5e.herokuapp.com/users/${user.Username}`, {
+        fetch(`https://movieapionrender.onrender.com/users/${user.Username}`, {
             method: "PUT",
             body: JSON.stringify(data),
             headers: {
