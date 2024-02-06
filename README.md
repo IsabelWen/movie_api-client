@@ -55,8 +55,4 @@ Hosted on Netlify: https://mymovie-api.netlify.app/
 ## Set up this App
 * Clone this repository
 * Navigate to the movie_api-client folder and run `npm install`
-* To install Parcel globally run `npm install -g parcel`
-* Still in the project folder run `npm install --save react react-dom`
-* Install React Bootstrap by running `npm install react-bootstrap bootstrap`
-* Install react-router and react-router-dom packages by running `npm install react-router react-router-dom --save`
 * Run `parcel src/index.html`
