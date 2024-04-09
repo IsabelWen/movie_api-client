@@ -20,7 +20,7 @@ export const MovieView = ({ movies, removeFav, addFav}) => {
     //const FavoriteMovies = {user.FavoriteMovies}; //parsing error? how to get user in?
 
     // Debug
-    console.log(user);
+    //console.log(user);
 
 
     return (

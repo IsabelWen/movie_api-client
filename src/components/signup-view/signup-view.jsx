@@ -26,7 +26,6 @@ export const SignupView = () => {
                 "Content-Type": "application/json"
             }
         }).then(async (response) => {
-            console.log(data)
             if (response.ok) {
                 alert("Signup successful");
                 window.location.reload();
