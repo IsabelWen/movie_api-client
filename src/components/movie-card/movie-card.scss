@@ -1,5 +1,18 @@
 .card-shadow {
     box-shadow: 5px 5px 15px 5px rgba(255, 165, 0, 0.4);
+
+    a {
+        text-decoration:none;
+    }
+
+    .card-title {
+        color: #fff;
+    }
+
+    .card-text {
+        color: #fff;
+    }
+    
 }
 
 .card-img {
@@ -18,4 +31,3 @@
 .fav-button:hover {
     transform: scale(1.2);
 }
-

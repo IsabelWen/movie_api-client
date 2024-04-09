@@ -2,6 +2,14 @@
   box-shadow: 5px 5px 15px 5px #ffa50066;
 }
 
+.card-shadow a {
+  text-decoration: none;
+}
+
+.card-shadow .card-title, .card-shadow .card-text {
+  color: #fff;
+}
+
 .card-img {
   object-fit: fill;
   width: 150px;
