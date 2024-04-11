@@ -102,14 +102,16 @@ export const MainView = () => {
     // Function to conditionally apply background-image class to root for login and sign up view
     useEffect(() => {
         const rootElement = document.getElementById("root");
-        const hasStartContainer = document.querySelector(".start-container");
 
-        if (hasStartContainer) {
+        if (!user) {
             rootElement.classList.add("background-image");
         } else {
             rootElement.classList.remove("background-image");
-        }
-    }, []);
+        }   
+    }, [user]);
+
+   
+
 
     return (
         <BrowserRouter>
