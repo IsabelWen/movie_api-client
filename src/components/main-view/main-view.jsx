@@ -110,9 +110,6 @@ export const MainView = () => {
         }   
     }, [user]);
 
-   
-
-
     return (
         <BrowserRouter>
             <NavigationBar
