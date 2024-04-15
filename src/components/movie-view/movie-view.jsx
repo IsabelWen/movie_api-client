@@ -35,9 +35,9 @@ export const MovieView = ({ movies, removeFav, addFav}) => {
                         <span className="h1">
                             {movie.Title}
                             {user.FavoriteMovies.includes(movie._id) ? (
-                                <BookmarkHeartFill size={40} color="orange" className="my-2 mx-2"on onClick={() => removeFav(movie._id)}/>
+                                <BookmarkHeartFill size={40} color="orange" style={{cursor: 'pointer'}} className="my-2 mx-2"on onClick={() => removeFav(movie._id)}/>
                             ) : (
-                                <BookmarkHeart size={40} color="orange" className="my-2 mx-2" onClick={() => addFav(movie._id)}/>
+                                <BookmarkHeart size={40} color="orange" style={{cursor: 'pointer'}}  className="my-2 mx-2" onClick={() => addFav(movie._id)}/>
                             )}
                         </span>
                         <br/><br/>
