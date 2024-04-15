@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { Col, Row } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
+import { BookmarkHeart, BookmarkHeartFill } from "react-bootstrap-icons";
 
 export const MovieView = ({ movies, removeFav, addFav}) => {
 
@@ -31,7 +32,15 @@ export const MovieView = ({ movies, removeFav, addFav}) => {
                 </Col>
                 <Col md={5} className="col-12">
                     <div className="my-1">
-                        <span className="h1">{movie.Title}</span>
+                        <span className="h1">
+                            {movie.Title}
+                            {user.FavoriteMovies.includes(movie._id) ? (
+                                <BookmarkHeartFill size={40} color="orange" className="my-2 mx-2"on onClick={() => removeFav(movie._id)}/>
+                            ) : (
+                                <BookmarkHeart size={40} color="orange" className="my-2 mx-2" onClick={() => addFav(movie._id)}/>
+                            )}
+                        </span>
+                        
                     </div>
                     <div className="my-1">
                         <span className="h6">Description: </span>
@@ -49,15 +58,8 @@ export const MovieView = ({ movies, removeFav, addFav}) => {
                         <span className="h6">Year: </span>
                         <span>{movie.Year}</span>
                     </div>
-                    <div>
-                        {user.FavoriteMovies.includes(movie._id) ? (
-                            <Button className="my-2 me-2"on onClick={() => removeFav(movie._id)}>Remove from Favorite</Button>
-                        ) : (
-                            <Button className="my-2 me-2" onClick={() => addFav(movie._id)}>Add to Favorite</Button>
-                        )}
-                        </div>
                     <Link to={`/`}>
-                        <Button className="my-2">Back</Button>
+                        <a className="my-2">Back</a>
                     </Link>
                 </Col>
             </Row>
