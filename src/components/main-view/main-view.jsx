@@ -7,7 +7,7 @@ import { NavigationBar } from "../navigation-bar/navigation-bar.jsx";
 import { ProfileView } from "../profile-view/profile-view.jsx";
 import "./main-view.scss";
 import { Row } from "react-bootstrap";
-import { Col, Form, Button } from "react-bootstrap";
+import { Col, Form } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export const MainView = () => {
@@ -99,6 +99,17 @@ export const MainView = () => {
         });
     };
 
+    // Function to conditionally apply background-image class to root for login and sign up view
+    useEffect(() => {
+        const rootElement = document.getElementById("root");
+
+        if (!user) {
+            rootElement.classList.add("background-image");
+        } else {
+            rootElement.classList.remove("background-image");
+        }   
+    }, [user]);
+
     return (
         <BrowserRouter>
             <NavigationBar
@@ -119,7 +130,7 @@ export const MainView = () => {
                             {user? (
                                 <Navigate to="/" />
                             ) : (
-                                <Col md={5}>
+                                <Col md={5} className="start-container mt-5">
                                     <SignupView />
                                 </Col>
                             )}
@@ -134,8 +145,8 @@ export const MainView = () => {
                                 {user ? (
                                     <Navigate to="/" />
                                 ) : (
-                                    <Col md={5}>
-                                        <LoginView 
+                                    <Col md={5} className="start-container mt-5">
+                                        <LoginView
                                             onLoggedIn={(user, token) => {
                                                 setUser(user);
                                                 setToken(token);

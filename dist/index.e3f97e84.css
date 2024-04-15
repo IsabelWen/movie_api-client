@@ -2,6 +2,14 @@
   box-shadow: 5px 5px 15px 5px #ffa50066;
 }
 
+.card-shadow a {
+  text-decoration: none;
+}
+
+.card-shadow .card-title, .card-shadow .card-text {
+  color: #fff;
+}
+
 .card-img {
   object-fit: fill;
   width: 150px;
@@ -28,6 +36,25 @@
   object-position: 25% 25%;
   width: 100%;
   height: 250px;
+}
+
+.start-container {
+  background-color: #000;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 5px 5px 15px 5px #89898966;
+}
+
+.background {
+  background: linear-gradient(#211d1a, #000);
+  height: 100%;
+}
+
+.background-image {
+  background-image: linear-gradient(#51505085, #000000ba), url("background.3289ddc3.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
 }
 
 :root, [data-bs-theme="light"] {

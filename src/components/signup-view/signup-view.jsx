@@ -44,7 +44,8 @@ export const SignupView = () => {
     };
 
     return (
-        <Form onSubmit={handleSubmit} className="mt-5">
+        <Form onSubmit={handleSubmit} style={{padding: '25px'}}>
+            <h2 className="mb-4 text-center">Sign Up</h2>
             <Form.Group controlId="formUsername">
                 <Form.Label>Username:</Form.Label>
                 <Form.Control
@@ -81,7 +82,7 @@ export const SignupView = () => {
                 onChange={(e) => setBirthday(e.target.value)}
                 />
             </Form.Group>
-            <Button type="submit" onClick={handleSubmit} className="mt-2">Submit</Button>
+            <Button type="submit" onClick={handleSubmit} className="mt-3">Submit</Button>
         </Form>
     );
 };
