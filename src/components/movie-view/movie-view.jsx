@@ -27,10 +27,10 @@ export const MovieView = ({ movies, removeFav, addFav}) => {
     return (
         <>
             <Row className="my-5 justify-content-md-center">
-                <Col md={7} className="col-12">
-                    <img src={movie.ImagePath} alt="movie cover" className="mx-auto w-100" />
-                </Col>
                 <Col md={5} className="col-12">
+                    <img style={{maxWidth: '500px'}} src={movie.ImagePath} alt="movie cover" className="mx-auto w-100" />
+                </Col>
+                <Col md={7} className="col-12">
                     <div className="my-1">
                         <span className="h1">
                             {movie.Title}
@@ -40,7 +40,7 @@ export const MovieView = ({ movies, removeFav, addFav}) => {
                                 <BookmarkHeart size={40} color="orange" className="my-2 mx-2" onClick={() => addFav(movie._id)}/>
                             )}
                         </span>
-                        
+                        <br/><br/>
                     </div>
                     <div className="my-1">
                         <span className="h6">Description: </span>
