@@ -2953,12 +2953,12 @@ const MyMovieApplication = ()=>{
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
             fileName: "src/index.jsx",
             lineNumber: 10,
-            columnNumber: 9
+            columnNumber: 13
         }, undefined)
     }, void 0, false, {
         fileName: "src/index.jsx",
         lineNumber: 9,
-        columnNumber: 5
+        columnNumber: 9
     }, undefined);
 };
 _c = MyMovieApplication;
@@ -47275,6 +47275,9 @@ const MovieView = ({ movies, removeFav, addFav })=>{
                                             user.FavoriteMovies.includes(movie._id) ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrapIcons.BookmarkHeartFill), {
                                                 size: 40,
                                                 color: "orange",
+                                                style: {
+                                                    cursor: "pointer"
+                                                },
                                                 className: "my-2 mx-2",
                                                 on: true,
                                                 onClick: ()=>removeFav(movie._id)
@@ -47285,6 +47288,9 @@ const MovieView = ({ movies, removeFav, addFav })=>{
                                             }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrapIcons.BookmarkHeart), {
                                                 size: 40,
                                                 color: "orange",
+                                                style: {
+                                                    cursor: "pointer"
+                                                },
                                                 className: "my-2 mx-2",
                                                 onClick: ()=>addFav(movie._id)
                                             }, void 0, false, {
